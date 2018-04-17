@@ -1,8 +1,12 @@
+@login
 Feature: As logged user I wan to change language
 
-@new_browser
+Scenario: Change language
+    When I click Account
+    And I change "Deutsch" and "de_DE"
+    Then page is availble in "Sprache"
+    
 Scenario Outline: Change language 
-    Given user is logged
     When I click Account
     And I change "<lang>" and "<LA>"
     Then page is availble in "<word>"
@@ -11,7 +15,7 @@ Scenario Outline: Change language
     | lang             | LA    | word     |
     | English          | en_US | Language |
     | Deutsch          | de_DE | Sprache  |
-    | Français         | fr_FR | Disponibilité |
+    | Français         | fr_FR | Langue   |
     | Italiano         | it_IT | Lingua   |
     | 日本語            | ja_JP | 言語      |
     | Türkçe           | tr_TR | Dil      |
