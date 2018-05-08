@@ -32,24 +32,10 @@ def step_impl(context, word):
             (By.XPATH, '//div/h3[text() = "{}"]'.format(word))
         )
     )
-    WebDriverWait(context.browser, 10).until(
-        EC.visibility_of_element_located(
-            (By.CSS_SELECTOR, '[id="account_button"]')
-        )
-    ).click()
-    WebDriverWait(context.browser, 10).until(
-        EC.visibility_of_element_located(
-            (By.CSS_SELECTOR, '[href="/logout"]')
-        )
-    ).click()
-    WebDriverWait(context.browser, 10).until(
-        EC.visibility_of_element_located(
-            (By.CSS_SELECTOR, '[class="ui_button btn_1 chrome blue"]')
-        )
-    ).click()
 
 @when('I enter "{topic}" in search bar')
 def step_impl(context, topic):
+    context.browser.find_element_by_css_selector('[id="search_query"]').clear()
     WebDriverWait(context.browser, 10).until(
         EC.visibility_of_element_located(
             (By.CSS_SELECTOR, '[id="search_query"]')
@@ -59,7 +45,6 @@ def step_impl(context, topic):
 @when('I choose suggested "{topic}"')
 def step_impl(context, topic):
     link = topic.replace(" ","+")
-    print(link)
     WebDriverWait(context.browser, 10).until(
         EC.visibility_of_element_located(
             (By.CSS_SELECTOR, 
@@ -75,18 +60,3 @@ def step_impl(context, topic):
             (By.XPATH, '//div/h1[text()="{}"]'.format(capital))
         )
     )
-    WebDriverWait(context.browser, 10).until(
-        EC.visibility_of_element_located(
-            (By.CSS_SELECTOR, '[id="account_button"]')
-        )
-    ).click()
-    WebDriverWait(context.browser, 10).until(
-        EC.visibility_of_element_located(
-            (By.CSS_SELECTOR, '[href="/logout"]')
-        )
-    ).click()
-    WebDriverWait(context.browser, 10).until(
-        EC.visibility_of_element_located(
-            (By.CSS_SELECTOR, '[class="ui_button btn_1 chrome blue"]')
-        )
-    ).click()

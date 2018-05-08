@@ -1,3 +1,5 @@
+import time
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -25,11 +27,17 @@ def before_feature(context, feature):
         context.browser.find_element_by_id(
             'signup_forms_submit'
             ).click()
-        WebDriverWait(context.browser, 10).until(
-            EC.visibility_of_element_located(
-            (By.ID, 'signup_password')
-            )
-        ).send_keys('gupiehaslo')
+        time.sleep(1)
+        try:
+            context.browser.find_element_by_id('signup_password')
+            context.browser.find_element_by_id('signup_password').send_keys('gupiehaslo')
+        except:
+            context.browser.find_element_by_css_selector('.magiclink_password_container').click()
+            WebDriverWait(context.browser, 10).until(
+                EC.visibility_of_element_located(
+                (By.ID, 'signup_password')
+                )
+            ).send_keys('gupiehaslo')
         WebDriverWait(context.browser, 10).until(
             EC.element_to_be_clickable(
             (By.CSS_SELECTOR, '[class="signup_login_btn active"]')
