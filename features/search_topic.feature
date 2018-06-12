@@ -1,4 +1,5 @@
 @login
+@logout
 Feature: As a logged user I want to find blog with my favorite topic
 
 Scenario Outline: Find blog

@@ -1,4 +1,5 @@
-@login
+@loging
+@logout
 Feature: As logged user I want to add file to my blog
 
 Scenario: Adding file from dashboard

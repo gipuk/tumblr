@@ -1,4 +1,5 @@
 @login
+@logout
 Feature: As logged user I wan to change language
 
 Scenario Outline: Change language
