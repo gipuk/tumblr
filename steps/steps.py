@@ -21,7 +21,6 @@ def step_impl(context):
         )
     ).click()
 
-
 @when('I change "{lang}" and "{LA}"')
 def step_impl(context, lang, LA):
     select = Select(context.browser.find_element_by_id("user_language"))
